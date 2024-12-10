@@ -6,6 +6,7 @@ from sklearn.linear_model import SGDClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
 
 # using original data
 df = pd.read_csv("combined_data.csv")
@@ -49,18 +50,9 @@ Y_pred_mlp = mlp_clf.predict(X_test)
 #     'MLP': Y_pred_mlp
 # }
 
-target_names = ['Boning', 'Slicing']
+target_names = ['0 - idle', '1 - cutting', '2 - sharpening']
 
 print(classification_report(Y_test, Y_pred, target_names=target_names))
 print(classification_report(Y_test, Y_pred_sgd, target_names=target_names))
 print(classification_report(Y_test, Y_pred_rf, target_names=target_names))
 print(classification_report(Y_test, Y_pred_mlp, target_names=target_names))
-
-# print("\nClassification Report for SVM:")
-# print(classification_report(Y_test, Y_pred))
-# print("\nClassification Report for SGD:")
-# print(classification_report(Y_test, Y_pred_sgd))
-# print("\nClassification Report for RandomForest:")
-# print(classification_report(Y_test, Y_pred_rf))
-# print("\nClassification Report for MLP:")
-# print(classification_report(Y_test, Y_pred_mlp))
